@@ -52,7 +52,7 @@ $Moses = explode('|', $Moses);
 <html>
 <body>
 
-<h2>Quotes from authors</h2>
+<h1>Quotes with authors names</h1>
 <ol class="list-group">
   <?php foreach($Moses as $rows){
 
@@ -62,19 +62,19 @@ $Moses = explode('|', $Moses);
    $quote = str_replace("'","",substr($rows, 0, $end));
 
 // first name part
-   $expo = explode(".h",$data);
+   $explodedend = explode(".h",$data);
 
   //  url
-   $url=array_pop($expo);
+   $url=array_pop($explodedend);
  $end_of_fname = strrpos($data, ",");
    $fname = str_replace(".'."," - ",substr($data, 0,$end_of_fname));
 
 // last name
-   $last = substr($data,$end_of_fname);
-  $end_of_lname = strpos($last,".");
-  $lname= substr($last, 0,$end_of_lname);
+   $last_parts = substr($data,$end_of_fname);
+  $end_of_lname = strpos($last_parts,".");
+  $lname= substr($last_parts, 0,$end_of_lname);
 // date
-  $dates = substr($last,$end_of_lname);
+  $dates = substr($last_parts,$end_of_lname);
   $end_of_date = strrpos($dates,".");
   $date = date("Y", strtotime(str_replace( ".https://bit."," ",substr($dates, 1,$end_of_date))));
 
